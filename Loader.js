@@ -1,7 +1,10 @@
 var ComponentSystem = {
-	componentSystemNames: null,
 	componentDirectoryPath: "./Components/",
 	components: { },
+	componentSystemNames: null,
+	systemProperties: {
+		verbosity: "full",			//TODO: Make verbosity value changes affect actual verbosity
+	},
 
 	build: function() {
 			this.componentSystemNames.forEach((current, index,arrayRef) => {
@@ -19,18 +22,32 @@ var ComponentSystem = {
 	},
 
 	loadComponentList: function (newComponentList) {
+		//TODO: Check each property is a non-null string
 		this.componentSystemNames = newComponentList;
 	},
 
 	loadRequiredProperties: function (newProperties) {
+		//TODO: Check each property is a non-null string
 		this.requiredProperties = newProperties;
 	},
 
-	run: function() { },
+	rebuild: function() {
+		//TODO: Clear system data before calling this.build()
+
+		this.build();
+	},
+
+	run: function() { 
+		//TODO: Run single ticks
+	},
 	
 	setComponentDirectoryPath: function (newPath) {
 		//TODO: Check permissions for newPath
 		this.componentDirectoryPath = newPath;
+	},
+
+	setSystemProperty: function(propertyName, newPropertyValue) {
+		systemProperties[propertyName] = newPropertyValue;
 	},
 };
 
