@@ -1,8 +1,20 @@
 var ComponentSystem = {
-	componentSystemNames: [ "Derp" ],
-	requiredProperties: [ "setup", "subscribe", "update" ],
+	componentSystemNames: null,
 	componentDirectoryPath: "./Components/",
 	components: { },
+
+	loadRequiredProperties: function (newProperties) {
+		this.requiredProperties = newProperties;
+	},
+
+	loadComponentList: function (newComponentList) {
+		this.componentSystemNames = newComponentList;
+	},
+
+	setComponentDirectoryPath: function (newPath) {
+		//TODO: Check permissions for newPath
+		this.componentDirectoryPath = newPath;
+	},
 
 	build: function() {
 			this.componentSystemNames.forEach((current, index,arrayRef) => {
