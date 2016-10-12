@@ -3,19 +3,6 @@ var ComponentSystem = {
 	componentDirectoryPath: "./Components/",
 	components: { },
 
-	loadRequiredProperties: function (newProperties) {
-		this.requiredProperties = newProperties;
-	},
-
-	loadComponentList: function (newComponentList) {
-		this.componentSystemNames = newComponentList;
-	},
-
-	setComponentDirectoryPath: function (newPath) {
-		//TODO: Check permissions for newPath
-		this.componentDirectoryPath = newPath;
-	},
-
 	build: function() {
 			this.componentSystemNames.forEach((current, index,arrayRef) => {
 				let candidateComponent = require(this.componentDirectoryPath+current+".js");
@@ -30,8 +17,21 @@ var ComponentSystem = {
 				}
 			});
 	},
-	run: function() { },
-};
 
+	loadComponentList: function (newComponentList) {
+		this.componentSystemNames = newComponentList;
+	},
+
+	loadRequiredProperties: function (newProperties) {
+		this.requiredProperties = newProperties;
+	},
+
+	run: function() { },
+	
+	setComponentDirectoryPath: function (newPath) {
+		//TODO: Check permissions for newPath
+		this.componentDirectoryPath = newPath;
+	},
+};
 
 module.exports = ComponentSystem;
